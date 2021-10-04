@@ -26,6 +26,7 @@ const Banner = () => {
 						80,
 					)}
 				</Typography>
+				<div className={classes.fadeBottom}></div>
 			</div>
 		</div>
 	);
@@ -58,5 +59,15 @@ const useStyles = makeStyles(theme => ({
 				color: '#000',
 			},
 		},
+	},
+	fadeBottom: {
+		position: 'absolute',
+		top: '30vh',
+		bottom: 0,
+		left: 0,
+		right: 0,
+		zIndex: 99,
+		backgroundImage:
+			'linear-gradient(180deg, transparent, rgba(37,37,37,0.61), #111)',
 	},
 }));
