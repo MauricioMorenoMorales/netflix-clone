@@ -1,17 +1,24 @@
-import { AppBar, Avatar, makeStyles, Toolbar } from '@material-ui/core';
+import {
+	AppBar,
+	Avatar,
+	IconButton,
+	makeStyles,
+	Toolbar,
+} from '@material-ui/core';
 import logo from '../images/netflix-logo-alt.png';
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 
 const Header = () => {
 	const [transparency, setTransparency] = useState(false);
+	const history = useHistory();
 
-	const transparencyScrollPosition = event =>
+	const hideHeader = event =>
 		window.scrollY > 100 ? setTransparency(true) : setTransparency(false);
 
 	useEffect(() => {
-		document.addEventListener('scroll', transparencyScrollPosition);
-		return () =>
-			document.removeEventListener('scroll', transparencyScrollPosition);
+		document.addEventListener('scroll', hideHeader);
+		return () => document.removeEventListener('scroll', hideHeader);
 	}, []);
 
 	const classes = useStyles();
@@ -23,8 +30,15 @@ const Header = () => {
 			elevation={0}
 		>
 			<Toolbar className={classes.toolbar}>
-				<img src={logo} alt="logo" className={classes.logo} />
-				<Avatar variant="square" style={{ cursor: 'pointer' }} />
+				<IconButton onClick={event => history.push('/')}>
+					<img src={logo} alt="logo" className={classes.logo} />
+				</IconButton>
+				<Avatar
+					variant="square"
+					style={{ cursor: 'pointer' }}
+					className={classes.borderRadius}
+					onClick={event => history.push('/')}
+				/>
 			</Toolbar>
 		</AppBar>
 	);
@@ -51,5 +65,9 @@ const useStyles = makeStyles(theme => ({
 	toolbar: {
 		display: 'flex',
 		justifyContent: 'space-between',
+		alignItems: 'center',
+	},
+	borderRadius: {
+		borderRadius: '3px',
 	},
 }));
