@@ -16,13 +16,19 @@ const Profile = () => {
 				<div className={classes.details}>
 					<div className={classes.plans}>
 						<Typography variant="h6">email usuario</Typography>
-						<Typography variant="h5" gutterBottom>
+						<Typography
+							variant="h5"
+							gutterBottom
+							className={classes.borderBottom}
+						>
 							Plans
 						</Typography>
 						<Plans cost={7.99}>Netflix Standard</Plans>
 						<Plans cost={11.99}>Netflix Basic</Plans>
-						<Plans cost={15.99}>Netflix Premium</Plans>
-						<NetflixButton>Sign Out</NetflixButton>
+						<Plans wide="medium" color="gray" cost={15.99}>
+							Netflix Premium
+						</Plans>
+						<NetflixButton wide="fullWidth">Sign Out</NetflixButton>
 					</div>
 				</div>
 			</div>
@@ -57,5 +63,16 @@ const useStyles = makeStyles(theme => ({
 	details: {
 		width: '100%',
 		marginLeft: theme.spacing(3),
+		'& h6': {
+			backgroundColor: '#aaa',
+			padding: theme.spacing(1),
+			fontSize: '18px',
+		},
+	},
+	plans: {
+		width: '100%',
+	},
+	borderBottom: {
+		borderBottom: '1px solid lightgray',
 	},
 }));

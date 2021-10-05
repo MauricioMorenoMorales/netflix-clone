@@ -2,12 +2,22 @@ import { makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
 import { NetflixButton } from '../styledComponents/styledComponents';
 
-const Plans = ({ cost, children }) => {
+const Plans = ({
+	cost,
+	children,
+	color = 'red',
+	wide = 'small',
+	radius = false,
+}) => {
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
-			<Typography variant="h5">{children}</Typography>
-			<NetflixButton>Suscribe</NetflixButton>
+			<Typography className={classes.standard} variant="h5">
+				{children}
+			</Typography>
+			<NetflixButton color={color} wide={wide} radius={radius}>
+				Suscribe
+			</NetflixButton>
 		</div>
 	);
 };
@@ -15,5 +25,17 @@ const Plans = ({ cost, children }) => {
 export default Plans;
 
 const useStyles = makeStyles(theme => ({
-	root: {},
+	root: {
+		marginTop: theme.spacing(3),
+		marginBottom: theme.spacing(3),
+		display: 'flex',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		'& button': {
+			marginBottom: theme.spacing(2),
+		},
+	},
+	standard: {
+		fontSize: '1.2rem',
+	},
 }));

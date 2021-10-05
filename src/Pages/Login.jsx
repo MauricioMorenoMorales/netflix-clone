@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import logo from '../images/netflix-logo-alt.png';
 import HeroBanner from '../images/Netflix-hero.png';
@@ -7,26 +7,36 @@ import {
 	NetflixButton,
 	NetflixInput,
 } from '../styledComponents/styledComponents';
+import { Signup } from '.';
 
 const Login = () => {
 	const classes = useStyles();
+	const [signIn, setSignIn] = useState(false);
 	return (
 		<div className={classes.root}>
 			<img src={logo} className={classes.logo} alt="Netflix Logo" />
 			<NetflixButton className={classes.session}>Iniciar Sesión</NetflixButton>
 			<div className={classes.info}>
-				<Typography variant="h4" gutterBottom>
-					Unlimited films, TV programmes and more.
-				</Typography>
-				<Typography variant="h5">Watch anywhere. Cancel at any time</Typography>
-				<Typography variant="h5">
-					Ready to watch ? Enter your email to create or restart your
-					membesrship
-				</Typography>
-				<div className={classes.InputBlock}>
-					<NetflixInput placeholder="Email Address" />
-					<NetflixButton>GET STARTED</NetflixButton>
-				</div>
+				{!signIn ? (
+					<Signup />
+				) : (
+					<>
+						<Typography variant="h4" gutterBottom>
+							Unlimited films, TV programmes and more.
+						</Typography>
+						<Typography variant="h5">
+							Watch anywhere. Cancel at any time
+						</Typography>
+						<Typography variant="h5">
+							Ready to watch ? Enter your email to create or restart your
+							membesrship
+						</Typography>
+						<div className={classes.InputBlock}>
+							<NetflixInput placeholder="Email Address" />
+							<NetflixButton>GET STARTED</NetflixButton>
+						</div>
+					</>
+				)}
 			</div>
 		</div>
 	);
