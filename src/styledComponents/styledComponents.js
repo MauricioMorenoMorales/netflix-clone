@@ -19,4 +19,6 @@ export const NetflixButton = styled.button`
 	padding: 15px;
 	font-size: 1.1rem;
 	border: none;
+	outline: none;
+	cursor: pointer;
 `;

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Login, Profile, Checkout, Home } from './Pages';
 
 function App() {
-	const user = false;
+	const user = true;
 	const classes = useStyles();
 	return (
 		<div class={classes.root}>

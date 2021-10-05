@@ -1,17 +1,18 @@
-import { makeStyles } from '@material-ui/core';
-import React from 'react'
+import { makeStyles, Typography } from '@material-ui/core';
+import React from 'react';
+import { NetflixButton } from '../styledComponents/styledComponents';
 
-const Plans = () => {
+const Plans = ({ cost, children }) => {
 	const classes = useStyles();
 	return (
-		<div>
-			<h1>Plans</h1>
-			<h1>Plans</h1>
+		<div className={classes.root}>
+			<Typography variant="h5">{children}</Typography>
+			<NetflixButton>Suscribe</NetflixButton>
 		</div>
-	)
-}
+	);
+};
 
-export default Plans
+export default Plans;
 
 const useStyles = makeStyles(theme => ({
 	root: {},
